@@ -13,12 +13,10 @@
   <button onclick="sendMessage()">发送</button>
   
   <h2>输出框</h2>
-  <!-- 输出框 -->
-  <textarea id="outputMessage" rows="4" cols="50" readonly></textarea>
+  <!-- 输出框，设置初始内容为静态消息 -->
+  <textarea id="outputMessage" rows="4" cols="50" readonly>Hello, World!</textarea>
 
   <script>
-    let messageToSend = "";
-
     // 发送消息的函数
     function sendMessage() {
       // 获取输入框中的消息
@@ -29,13 +27,6 @@
       
       // 将消息存储到本地（浏览器本地存储）
       localStorage.setItem("message", message);
-
-      // 如果需要，可以通过 WebSocket 或其他方式将消息发送到 Unity APK
-    }
-
-    // 获取输出框内容
-    function getOutputMessage() {
-      return document.getElementById("outputMessage").value;
     }
 
     // 页面加载时，从本地存储加载消息
