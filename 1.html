@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>消息发送网页</title>
+</head>
+<body>
+  <h1>发送消息</h1>
+  <!-- 输入框 -->
+  <input type="text" id="inputMessage" placeholder="输入消息" />
+  <!-- 按钮 -->
+  <button onclick="sendMessage()">发送</button>
+  
+  <h2>输出框</h2>
+  <!-- 输出框 -->
+  <textarea id="outputMessage" rows="4" cols="50" readonly></textarea>
+
+  <script>
+    let messageToSend = "";
+
+    // 发送消息的函数
+    function sendMessage() {
+      // 获取输入框中的消息
+      const message = document.getElementById("inputMessage").value;
+      
+      // 更新输出框的内容
+      document.getElementById("outputMessage").value = message;
+      
+      // 将消息存储到本地（浏览器本地存储）
+      localStorage.setItem("message", message);
+
+      // 如果需要，可以通过 WebSocket 或其他方式将消息发送到 Unity APK
+    }
+
+    // 获取输出框内容
+    function getOutputMessage() {
+      return document.getElementById("outputMessage").value;
+    }
+
+    // 页面加载时，从本地存储加载消息
+    window.onload = function() {
+      const savedMessage = localStorage.getItem("message");
+      if (savedMessage) {
+        document.getElementById("outputMessage").value = savedMessage;
+      }
+    };
+  </script>
+</body>
+</html>
